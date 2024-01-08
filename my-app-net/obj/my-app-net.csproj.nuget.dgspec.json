@@ -1,0 +1,64 @@
+{
+  "format": 1,
+  "restore": {
+    "/home/levi.alves@db1.com.br/Projects/clientes/levalves/my-app-dot-net/my-app-net/my-app-net.csproj": {}
+  },
+  "projects": {
+    "/home/levi.alves@db1.com.br/Projects/clientes/levalves/my-app-dot-net/my-app-net/my-app-net.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/levi.alves@db1.com.br/Projects/clientes/levalves/my-app-dot-net/my-app-net/my-app-net.csproj",
+        "projectName": "my-app-net",
+        "projectPath": "/home/levi.alves@db1.com.br/Projects/clientes/levalves/my-app-dot-net/my-app-net/my-app-net.csproj",
+        "packagesPath": "/home/levi.alves@db1.com.br/.nuget/packages/",
+        "outputPath": "/home/levi.alves@db1.com.br/Projects/clientes/levalves/my-app-dot-net/my-app-net/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/levi.alves@db1.com.br/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/home/levi.alves@db1.com.br/.asdf/installs/dotnet-core/8.0.100/sdk/8.0.100/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

@@ -4,7 +4,6 @@ WORKDIR /app
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
-# COPY zoop-banking-rpa-pix-reprocessing.sln ./
 COPY my-app-net/my-app-net.csproj my-app-net/
 RUN dotnet restore ./my-app-net/my-app-net.csproj
 COPY . .

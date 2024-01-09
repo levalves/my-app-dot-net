@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        @import url(http://fonts.googleapis.com/css?family=Roboto);
+
+        body {
+            text-align: center;
+            color: #4E4E4E;
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 22px;
+        }
+
+        body > h1 {
+            text-align: center;
+            height: 26px;
+            left: 129px;
+            right: 129px;
+            top: 0px;
+
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 20px;
+            line-height: 24px;
+            /* or 120% */
+
+            color: #4E4E4E;
+
+            border-radius: 5px;
+
+            /* Inside Auto Layout */
+
+            flex: none;
+            order: 0;
+            align-self: center;
+            flex-grow: 0;
+            margin: 0px 16px;
+        }
+
+        body > h2 {
+            text-align: center;
+            height: 26px;
+            left: 129px;
+            right: 129px;
+            top: 0px;
+
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 22px;
+            line-height: 24px;
+            /* or 120% */
+
+            color: #4E4E4E;
+
+            border-radius: 5px;
+
+            /* Inside Auto Layout */
+
+            flex: none;
+            order: 0;
+            align-self: center;
+            flex-grow: 0;
+            margin: 0px 16px;
+        }
+
+        body > p {
+            position: static;
+            height: 37px;
+            left: calc(50% - 388px / 2);
+            top: calc(50% - 66px / 2 + 21px);
+
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 22px;
+            /* or 137% */
+
+            text-align: center;
+
+            /* Gray/Graphite */
+
+            color: #4E4E4E;
+
+            /* Inside Auto Layout */
+
+            flex: none;
+            order: 1;
+            align-self: center;
+            flex-grow: 0;
+            margin: 0px 16px;
+        }
+    </style>
+</head>
+
+<body>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td align="center">
+            <h1>Ol&aacute;, <b>{{name}}</b></h1>
+            <p>Recebemos o pedido de cadastro do email <b>{{key}}</b> como sua Chave Pix.</p>
+            <p>Para confirmar a posse da chave, digite o c&oacute;digo abaixo no seu Internet Banking.</p>
+            <h2><b>{{code}}</b></h2>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

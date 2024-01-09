@@ -21,8 +21,8 @@ source "$__BUILD_TOOLS_PATH/scripts/aws_credentials.sh"
 
 COMMIT_HASH=${COMMIT_HASH:-$(git log --pretty=format:%h -n 1)}
 
-REPO="pix-qrcode-$ENV"
-SECRET_NAME="pix-qrcode"
+REPO="my-app-dot-net-$ENV"
+SECRET_NAME="my-app-dot-net"
 
 f_log "COMMIT_HASH is set to $COMMIT_HASH"
 export TF_VAR_commit_hash="$COMMIT_HASH"
@@ -32,7 +32,7 @@ f_create_ecr(){
   f_get_region
   f_log "Creating $Repo..."
   f_get_role
-  set_aws_credentials $ROLE
+  # set_aws_credentials $ROLE
   REGION=$(f_get_region)
   ACCOUNT_ID=$(f_get_account_id)
   if aws ecr describe-repositories --repository-names "$REPO" >/dev/null 2>&1; then
@@ -51,7 +51,7 @@ f_delete_ecr(){
   f_get_region
   f_log "Deleting $REPO..."
   f_get_role
-  set_aws_credentials $ROLE
+  # set_aws_credentials $ROLE
   REGION=$(f_get_region)
   ACCOUNT_ID=$(f_get_account_id)
   if aws ecr delete-repository --repository-name $REPO --force >/dev/null 2>&1; then
@@ -78,7 +78,7 @@ f_get_role() {
   if [ "$ENV" == "production" ]; then
     ROLE="arn:aws:iam::000000000001:role/CrossAccount-levalves_Prod"
   else
-    ROLE="arn:aws:iam::000000000002:role/CrossAccount-levalves_Prod"
+    ROLE="arn:aws:iam::245017079162:role/CrossAccount-levalves-NonProd"
   fi
   echo $ROLE
 }
@@ -161,26 +161,26 @@ IMAGE_TAG="$REPO_NAME:$COMMIT_HASH"
 f_docker_build_image() {
   f_create_ecr
   f_get_role
-  set_aws_credentials $ROLE
+  # set_aws_credentials $ROLE
   REGION=$(f_get_region)
   ACCOUNT_ID=$(f_get_account_id)
   echo "Building image version: $BUILD_NUMBER"
   build_image "$(dirname $PWD)/Dockerfile" $IMAGE_TAG $REGION
-  set_aws_credentials $ROLE
+  # set_aws_credentials $ROLE
 }
 
 f_docker_push_image() {
   f_get_role
-  set_aws_credentials $ROLE
+  # set_aws_credentials $ROLE
   REGION=$(f_get_region)
   ROLE=$(f_get_role)
   push_image $IMAGE_TAG $REGION $ROLE
-  set_aws_credentials $ROLE
+  # set_aws_credentials $ROLE
 }
 
 f_check_deployment() {
   f_get_role
-  set_aws_credentials $ROLE
+  # set_aws_credentials $ROLE
   REGION=$(f_get_region)
   CLUSTER= echo $CLUSTER | sed 's/ "//g;s/"//g'
   SERVICE_NAME= echo $SERVICE_NAME | sed 's/ "//g;s/"//g'

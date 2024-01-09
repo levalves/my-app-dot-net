@@ -1,0 +1,128 @@
+[
+  {
+    "name": "${name}",
+    "image": "${repository_url}:${image_tag}",
+    "cpu": ${container_cpu},
+    "memory": ${container_hard_memory},
+    "memoryReservation": ${container_soft_memory},
+    "command": [
+      "/bin/sh",
+      "-c",
+      "export DD_AGENT_HOST=$(curl http://169.254.169.254/latest/meta-data/local-ipv4); java -javaagent:/opt/datadog/dd-java-agent.jar -Dserver.port=$SERVER_PORT -server -XX:MaxMetaspaceSize=$MAX_METASPACE_SIZE -Xmx$XMX -Xms$XMS -Dspring.profiles.active=$ENVIRONMENT -jar /app/$APPLICATION_ARTIFACTS"
+    ],
+    "portMappings": [
+      {
+        "containerPort": ${container_port}
+      }
+    ],
+    "environment": [
+      {
+        "name": "AWS_REGION",
+        "value": "${task_region}"
+      },
+      {
+        "name": "ENVIRONMENT",
+        "value": "${environment}"
+      },
+      {
+        "name": "BANKING-QR-CODE-PROPERTIES_AWS_SNS_EXPORT-METRICS_NAME",
+        "value": "aws-sns://${export_metrics_topic_name}"
+      },
+      {
+        "name": "BANKING-QR-CODE-PROPERTIES_AWS_SNS_EXPORT-METRICS_CONFIG",
+        "value": "?amazonSNSClient=#amazonSNS"
+      },
+      {
+        "name": "SERVER_PORT",
+        "value": "${container_port}"
+      },
+      {
+        "name": "DD_SERVICE",
+        "value": "${dd_service_name}"
+      },
+      {
+        "name": "DD_ENV",
+        "value": "${environment}"
+      },
+      {
+        "name": "DD_LOGS_ENABLED",
+        "value": "true"
+      },
+      {
+        "name": "DD_VERSION",
+        "value": "${dd_service_version}"
+      },
+      {
+        "name": "DD_LOGS_INJECTION",
+        "value": "true"
+      },
+      {
+        "name": "XMS",
+        "value": "${xms}"
+      },
+	    {
+        "name": "XMX",
+        "value": "${xmx}"
+      },
+      {
+        "name": "MAX_METASPACE_SIZE",
+        "value": "${max_metaspace}"
+      },
+      {
+        "name": "APPLICATION_ARTIFACTS",
+        "value": "${application_artifacts}"
+      }
+    ],
+    "secrets": [
+      {
+        "name": "MONGODB_URI",
+        "valueFrom": "${mongdb_uri}"
+      },
+      {
+        "name": "MONGODB_PASSWORD",
+        "valueFrom": "${mongodb_password}"
+      },
+      {
+        "name": "MONGODB_USER",
+        "valueFrom": "${mongodb_user}"
+      },
+      {
+        "name": "JD_PASSWORD",
+        "valueFrom": "${jd_password}"
+      },
+      {
+        "name": "JD_USERNAME",
+        "valueFrom": "${jd_username}"
+      },
+      {
+        "name": "JD_BASE_URL",
+        "valueFrom": "${jd_baseurl}"
+      },
+      {
+        "name": "DB_ADM_USER",
+        "valueFrom": "${db_adm_user}"
+      },
+      {
+        "name": "DB_ADM_PASS",
+        "valueFrom": "${db_adm_pass}"
+      },
+      {
+        "name": "SLACK_TOKEN",
+        "valueFrom": "${slack_token}"
+      },
+      {
+        "name": "SMS_USERNAME",
+        "valueFrom": "${sms_username}"
+      },
+      {
+        "name": "SMS_TOKEN",
+        "valueFrom": "${sms_token}"
+      }
+    ],
+    "dockerLabels": {
+      "com.datadoghq.tags.env": "${environment}",
+      "com.datadoghq.tags.service": "${dd_service_name}",
+      "com.datadoghq.tags.version": "${dd_service_version}"
+    }
+  }
+]
